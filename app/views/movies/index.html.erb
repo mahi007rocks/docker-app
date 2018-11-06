@@ -1,0 +1,34 @@
+
+<h2 style="text-align: center;color: red">Lates Movies</h2>
+<% if @movies.count > 0 %>
+<table width="100%">
+	<thead>
+	  <tr>
+		<td class="movie-list"><b>Name</td>
+		<td class="movie-list"><b>Genre</td>
+		<td class="movie-list"><b>Director</td>
+		<td class="movie-list"><b>Language</td>
+		<td class="movie-list"><b>Release Year</td>
+	  </tr>
+	</thead>
+	<tbody>
+		  <%@movies.each do |mv| %>
+		    <tr>
+            <td><%= mv.name%></td>
+            <td><%= mv.genre %></td>
+            <td><%= mv.director %></td>
+            <td><%= mv.language %></td>
+            <td><%= mv.release_year %></td>
+            </tr>
+          <% end %>
+	</tbody>
+</table>
+<% else %>
+<h2>No Movies are there</h2>
+<% end %>
+<style type="text/css">
+	.movie-list{
+		font-size: 17px;
+		color: red;
+	}
+</style>
