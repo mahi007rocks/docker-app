@@ -1,6 +1,11 @@
 <div class="style="text-align: center;">
 	<h4>Movie List</h4>
-	<%= @movie.name %>
+	<p><b>Name:</b> <%= @movie.name %><br>
+	<b>Genre:</b><%= @movie.genre %><br>
+	<b>Director:</b><%= @movie.director %><br>
+	<b>Langauge:</b><%= @movie.language %><br>
+	<b>Release Year:</b><%= @movie.release_year %>
+    </p>
 </div>
 	
 <%= link_to "Back to", root_path %>
