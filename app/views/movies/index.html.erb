@@ -1,5 +1,6 @@
 
 <h2 style="text-align: center;color: red">Lates Movies</h2>
+<h3 style="text-align: left;color: green"><%= link_to "Add Movie", new_movie_path %></h3>
 <% if user_signed_in? %>
 	<% if @movies.count > 0 %>
 	<table width="100%">

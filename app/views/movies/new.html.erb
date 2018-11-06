@@ -1,2 +1,41 @@
-<h1>Movies#new</h1>
-<p>Find me in app/views/movies/new.html.erb</p>
+<div class="new-movie">
+	<h3>Add a Movie</h3>
+	<%= form_for @movie, local: true do |f| %>
+      <p>
+	    <%= f.label :name %><br>
+	    <%= f.text_field :name %>
+	  </p>
+	  <p>
+	    <%= f.label :Genre %><br>
+	    <%= f.text_field :genre %>
+	  </p>
+	  <p>
+	    <%= f.label :director %><br>
+	    <%= f.text_field :director %>
+	  </p>
+	  <p>
+	    <%= f.label :language %><br>
+	    <%= f.text_field :language %>
+	  </p>
+	  <p>
+	    <%= f.label :release_year %><br>
+	    <%= f.text_field :release_year %>
+	  </p>
+	  <%= f.submit "create", class: "btn-movie"%>
+    <% end %>
+    <%=link_to "Cancel", root_path, class: "cancel-btn" %>
+</div>
+<style type="text/css">
+  .new-movie{
+    text-align: center;
+  }
+  .btn-movie{
+  	color: #fff;
+  	background-color: green;
+  }
+  .cancel-btn{
+    color: #fff;
+  	background-color: red;
+  	margin-top: 23px;
+  }
+</style>
