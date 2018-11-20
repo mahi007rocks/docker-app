@@ -1,0 +1,70 @@
+FROM ubuntu:16.04
+
+RUN apt-get update && \
+    apt-get install -y \
+    curl \
+    nano \
+    openssl \
+    libreadline6 \
+    libreadline6-dev \
+    openssl \
+    zlib1g \
+    zlib1g-dev \
+    libssl-dev \
+    libyaml-dev \
+    libsqlite3-0 \
+    libsqlite3-dev \
+    sqlite3 \
+    libxml2-dev \
+    libxslt-dev \
+    autoconf \
+    libc6-dev \
+    ncurses-dev \
+    automake \
+    libtool \
+    bison \
+    subversion \
+    pkg-config \
+    build-essential \
+    git-core \
+    libmysqlclient-dev \
+    libmagickwand-dev \
+    imagemagick \
+    gnupg2 \
+    wget \
+    libgdbm-dev \
+    libncurses5-dev \
+    automake \
+    libtool \
+    bison \
+    libffi-dev \
+    && apt-get clean
+
+RUN mkdir -p /srv/ruby-app/
+
+WORKDIR /srv/ruby-app/
+
+copy . /srv/ruby-app/
+
+RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 && \
+    curl -sSL https://get.rvm.io -o rvm.sh
+
+#RUN rvm install 2.5.1 && \
+#    source /usr/local/rvm/scripts/rvm
+#RUN gem install bundle && \
+#    bundle install
+
+
+RUN /bin/bash -l -c "source /usr/local/rvm/scripts/rvm" && \
+    /bin/bash -l -c "rvm install 2.5.1"  && \
+#    /bin/bash -l -c "rvm use ree" && \
+#    /bin/bash -l -c "rvm rubygems 1.6.2 --force" && \
+#    echo 'gem: --no-rdoc --no-ri' >> "$HOME/.gemrc"
+
+RUN /bin/bash -l -c "gem install bundle"
+
+
+RUN /bin/bash -l -c "bundle install"
+EXPOSE 3000
+
+CMD ['rails','s']
